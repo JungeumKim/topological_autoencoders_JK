@@ -1,7 +1,7 @@
 """All models."""
 from .approx_based import TopologicallyRegularizedAutoencoder
 from .vanilla import ConvolutionalAutoencoderModel, VanillaAutoencoderModel
-from .competitors import Isomap, PCA, TSNE, UMAP
+from .competitors import Isomap, PCA, TSNE #, UMAP
 
 __all__ = [
     'ConvolutionalAutoencoderModel',
@@ -10,6 +10,5 @@ __all__ = [
     'VanillaAutoencoderModel',
     'Isomap',
     'PCA',
-    'TSNE',
-    'UMAP'
+    'TSNE'
 ]
