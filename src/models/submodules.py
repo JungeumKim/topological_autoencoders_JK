@@ -525,25 +525,25 @@ class MLPAutoencoder(AutoencoderModel):
 
 
 class MLPAutoencoder_Spheres(AutoencoderModel):
-    def __init__(self, arch=[3, 32, 32, 2]):
+    def __init__(self, input_dim = 101, factor=32):
         super().__init__()
         self.encoder = nn.Sequential(
-            nn.Linear(101, 32),
-            nn.BatchNorm1d(32),
+            nn.Linear(input_dim, factor),
+            nn.BatchNorm1d(factor),
             nn.ReLU(True),
-            nn.Linear(32, 32),
-            nn.BatchNorm1d(32),
+            nn.Linear(factor, factor),
+            nn.BatchNorm1d(factor),
             nn.ReLU(True),
-            nn.Linear(32, 2)
+            nn.Linear(factor, 2)
         )
         self.decoder = nn.Sequential(
-            nn.Linear(2, 32),
-            nn.BatchNorm1d(32),
+            nn.Linear(2, factor),
+            nn.BatchNorm1d(factor),
             nn.ReLU(True),
-            nn.Linear(32, 32),
-            nn.BatchNorm1d(32),
+            nn.Linear(factor,factor),
+            nn.BatchNorm1d(factor),
             nn.ReLU(True),
-            nn.Linear(32, 101)
+            nn.Linear(factor, input_dim)
         )
         self.reconst_error = nn.MSELoss()
 
